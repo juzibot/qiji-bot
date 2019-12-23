@@ -11,8 +11,8 @@ import {
 
 const BOT_NAME = 'Qiji BOT'
 
-const LOGIN_ANNOUNCEMENT  = `Der! I just got online!\n${BOT_NAME} v${VERSION}`
-const EXIT_ANNOUNCEMENT   = `Der! I'm going to exit now, see you, bye!\n${BOT_NAME} v${VERSION}`
+const LOGIN_ANNOUNCEMENT  = `奇绩创坛机器人上线～\n${BOT_NAME} v${VERSION}`
+const EXIT_ANNOUNCEMENT   = `奇绩创坛机器人下线～\n${BOT_NAME} v${VERSION}`
 
 let bot: undefined | Wechaty
 
