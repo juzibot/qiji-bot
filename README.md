@@ -1,7 +1,7 @@
 # Qiji Bot
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg)](https://github.com/chatie/wechaty)
-[![Build Status](https://travis-ci.com/juzibot/QijiBot.svg?branch=master)](https://travis-ci.com/wechaty/heroku-wechaty-getting-started)
+[![Build Status](https://travis-ci.com/juzibot/QijiBot.svg?branch=master)](https://travis-ci.com/juzibot/QijiBot)
 [![Greenkeeper badge](https://badges.greenkeeper.io/juzibot/QijiBot.svg)](https://greenkeeper.io/)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
