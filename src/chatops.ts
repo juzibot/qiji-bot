@@ -8,7 +8,7 @@ import {
 }                   from './config'
 
 const CHATOPS_ROOM_TOPIC  = 'ChatOps - Qiji BOT'
-const CHATOPS_ROOM_ID     = '"19995279701@chatroom"'
+const CHATOPS_ROOM_ID     = '19995279701@chatroom'
 
 let room: Room
 
