@@ -6,26 +6,11 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Deploy to Heroku for Wechaty Starter Project
+## Staging
 
-## About `Deploy to Heroku` Button
+We are current DevOps the master branch from the repo to Heroku under the protection of Travis CI.
 
-[Creating a 'Deploy to Heroku' Button](https://devcenter.heroku.com/articles/heroku-button)
-
-> The ‘Deploy to Heroku’ button enables users to deploy apps to Heroku without leaving the web browser, and with little or no configuration. The button is ideal for customers, open-source project maintainers or add-on providers who wish to provide their customers with a quick and easy way to deploy and configure a Heroku app.
-
-## FEATURES
-
-1. Deploy to Heroku without leaving the Web Browser. See `Deploy to Heroku` Button above
-1. Restore Wechat Bot Session across Restart by enable MemoryCard with AWS S3. See `src/get-memory.ts`
-1. Hot Module Reload Enabled for convenience when developing. See `src/handlers/on-*.ts`
-1. Send Online/Offline Notification Message to BotSelf when the Program Start/Stop. See `src/finis.ts`
-1. Simpel Web Server that can be used to Scan QR Code, or any other operations integrated with Wechaty. See `src/start-web.ts`
-
-## LIMITATIONS
-
-1. [If an app has a web dyno, and that web dyno receives no traffic in a 30 minute period, the web dyno will sleep](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping)
-1. [Dynos are restarted (cycled) at least once per day to help maintain the health of applications running on Heroku](https://devcenter.heroku.com/articles/dynos#restarting)
+You can visit the staging system at https://qiji-bot.herokuapp.com/
 
 ## SEE ALSO
 
