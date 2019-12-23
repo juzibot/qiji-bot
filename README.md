@@ -20,7 +20,7 @@ You can visit the staging system at <https://qiji-bot.herokuapp.com/>
 - [Heroku App.Json Manifest and Button Maker](https://www.expeditedssl.com/heroku-button-maker)
 - [Why does SIGTERM handling not work correctly in NodeJS with NPM?](https://help.heroku.com/ROG3H81R/why-does-sigterm-handling-not-work-correctly-in-nodejs-with-npm)
 
-## Project Management Communitee (PMC)
+## Project Management Committee (PMC)
 
 - Bohao YIN (尹伯昊)
 - Jiarui LI (李佳芮)
