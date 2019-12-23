@@ -9,7 +9,7 @@ import {
   VERSION,
 }             from './config'
 
-const BOT_NAME = 'Mike BO'
+const BOT_NAME = 'Qiji BOT'
 
 const LOGIN_ANNOUNCEMENT  = `Der! I just got online!\n${BOT_NAME} v${VERSION}`
 const EXIT_ANNOUNCEMENT   = `Der! I'm going to exit now, see you, bye!\n${BOT_NAME} v${VERSION}`
