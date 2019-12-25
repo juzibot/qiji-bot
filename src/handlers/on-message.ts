@@ -8,7 +8,6 @@ import {
   talkTBP,
 } from '../plugins'
 
-
 async function isRoomMentionMe (message: Message) : Promise<string|null> {
   const room = message.room()
   const text = message.text()
@@ -40,7 +39,6 @@ export default async function onMessage (
   }
 
   if ((room && mentionMe) || (!room && contact)) {
-  
     const defaultReply = await talkTBP(text) || '我什么都不会呢'
     if (room) {
       await room.say(defaultReply)
