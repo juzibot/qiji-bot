@@ -4,4 +4,3 @@ export interface KeywordRoomConfig {
   rules: string[],
   welcomes: string[],
 }
-  
