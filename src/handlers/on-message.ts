@@ -32,7 +32,7 @@ async function dingDong (
   if (type === Message.Type.Text) {
     if (text.toLowerCase() === 'ding') {
       await message.say('dong')
-      await contact.alias('lijiarui')
+      console.log(contact)
     }
   }
 
