@@ -29,7 +29,7 @@ async function dingDong (
   }
 
   if (type === Message.Type.Text) {
-    if (text.toLowerCase() === 'ding') {
+    if (text.match(/^ding\s/i)) {
       await message.say('dong')
       if (contact) {
         await contact.alias('奇绩创坛支持者')
