@@ -1,7 +1,7 @@
 import { Friendship } from 'wechaty'
 
 const NEW_FRIEND_GREETING = [
-  "你好！","这里是奇绩创坛！"
+  '你好！', '这里是奇绩创坛！',
 ]
 
 export class FriendshipManager {
