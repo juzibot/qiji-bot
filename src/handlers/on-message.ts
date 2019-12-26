@@ -23,7 +23,6 @@ async function dingDong (
   const type = message.type()
   const room = message.room()
   const contact = message.from()
-  // const mentionLisrt = await message.mention()
 
   if (room) {
     return
@@ -32,7 +31,9 @@ async function dingDong (
   if (type === Message.Type.Text) {
     if (text.toLowerCase() === 'ding') {
       await message.say('dong')
-      console.log(contact)
+      if (contact){
+        await contact.alias('奇绩创坛支持者')
+      }
     }
   }
 
