@@ -29,10 +29,11 @@ async function dingDong (
   }
 
   if (type === Message.Type.Text) {
-    if (text.match(/^ding\s/i)) {
-      await message.say('dong')
+    if (text.match(/^准备/i) || text.match(/^马上/i) || text.match(/^最近/i) || text.match(/^很快/i)) {
+      await message.say('[Hey]嗯嗯，那您报名期间有什么问题可以随时联系我。')
+      await message.say('期待在创业营见到您！')
       if (contact) {
-        await contact.alias('奇绩创坛支持者')
+        await contact.alias('核心-'+contact.name())
       }
     }
   }
