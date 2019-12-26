@@ -23,8 +23,6 @@ async function dingDong (
   const type = message.type()
   const room = message.room()
   const contact = message.from()
-  const name = contact.name()
-
   // const mentionLisrt = await message.mention()
 
   if (room) {
@@ -34,12 +32,7 @@ async function dingDong (
   if (type === Message.Type.Text) {
     if (text.toLowerCase() === 'ding') {
       await message.say('dong')
-      try {
-        await contact.alias('lijiarui')
-        console.log(`change ${contact.name()}'s alias successfully!`)
-      } catch (e) {
-        console.log(`failed to change ${contact.name()} alias!`)
-      }
+      await contact.alias('lijiarui')
     }
   }
 
