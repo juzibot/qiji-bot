@@ -98,7 +98,7 @@ export async function startWeb (
             `<form action="`,
             sendmes(mes, '已经收到'),
             `method="get">`,
-            '<input type="submit" value="已经收到">',
+            '<input type="button" value="已经收到">',
             '</form>',
           ].join('')
           MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n` + NewHTML
