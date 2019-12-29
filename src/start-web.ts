@@ -40,8 +40,8 @@ export async function githubWebhookHandler (
 
 export async function startWeb (
   bot: Wechaty,
-  message : Message,
 ): Promise<void> {
+  const message=Message
   log.info('on-message', 'onMessageAgain(%s)', message)
   log.verbose('startWeb', 'startWeb(%s)', bot)
 
