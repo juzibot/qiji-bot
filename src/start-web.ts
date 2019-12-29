@@ -64,12 +64,14 @@ export async function startWeb (
     if (qrcodeValue) {
 
       html = [
-        `<h1>BOT5 v${VERSION}</h1>`,
+        `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/Wait.png">`,
         '\n\n',
         '<image src="',
+        '<div align="center">',
         'https://api.qrserver.com/v1/create-qr-code/?data=',
         encodeURIComponent(qrcodeValue),
-        '" style="margin: 0 auto;">',
+        '>',
+        '</div>',
       ].join('')
 
     } else if (userName) {
@@ -83,14 +85,15 @@ export async function startWeb (
       MessageHtml = MessageHtml + `</ol>`
 
       html = [
-        `<p> BOT5 v${VERSION} User ${userName} logined. </p>`,
+        `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/InUse.png">`,
+        `<p> ${userName} 正在使用 </p>`,
         FORM_HTML,
         MessageHtml,
       ].join('')
 
     } else {
 
-      html = `BOT5 v${VERSION} Hello, come back later please.`
+      html = `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/Black.png">`
 
     }
     return html
