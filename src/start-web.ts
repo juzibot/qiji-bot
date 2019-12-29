@@ -1,7 +1,6 @@
 import Hapi, { Request, ResponseToolkit }    from '@hapi/hapi'
 import {
   Wechaty,
-  Message,
 }               from 'wechaty'
 
 import {
@@ -41,8 +40,6 @@ export async function githubWebhookHandler (
 export async function startWeb (
   bot: Wechaty,
 ): Promise<void> {
-  const message = Message
-  log.info('on-message', 'onMessageAgain(%s)', message)
   log.verbose('startWeb', 'startWeb(%s)', bot)
 
   let qrcodeValue : undefined | string
@@ -79,19 +76,19 @@ export async function startWeb (
       ].join('')
 
     } else if (userName) {
-      let roomList = await bot.Room.findAll()
-      let roomHtml = `The rooms I have joined are as follows: <ol>`
-      for (let room of roomList) {
-        const topic = await room.topic()
-        const roomId = room.id
-        roomHtml = roomHtml + `<li> ${topic} / ${roomId} </li>\n`
+      let MessageList = await bot.Message.findAll()
+      let MessageHtml = `The rooms I have joined are as follows: <ol>`
+      for (let mes of MessageList) {
+        const what = await mes.text()
+        const who = await mes.from()?.name()
+        MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n`
       }
-      roomHtml = roomHtml + `</ol>`
+      MessageHtml = MessageHtml + `</ol>`
 
       html = [
         `<p> BOT5 v${VERSION} User ${userName} logined. </p>`,
         FORM_HTML,
-        roomHtml,
+        MessageHtml,
       ].join('')
 
     } else {
