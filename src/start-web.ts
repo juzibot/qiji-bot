@@ -76,10 +76,39 @@ export async function startWeb (
       ].join('')
 
     } else if (userName) {
+      const process = require('process')
+      const tencentcloud = require('tencentcloud-sdk-nodejs')
+      const TbpClient = tencentcloud.tbp.v20190627.Client
+      const models = tencentcloud.tbp.v20190627.Models
+      const Credential = tencentcloud.common.Credential
+      const ClientProfile = tencentcloud.common.ClientProfile
+      const HttpProfile = tencentcloud.common.HttpProfile
+      let cred = new Credential(process.env.TBP_SecretId, process.env.TBP_SecretKey)
+      let httpProfile = new HttpProfile()
+      httpProfile.endpoint = 'tbp.tencentcloudapi.com'
+      let clientProfile = new ClientProfile()
+      clientProfile.httpProfile = httpProfile
+      let client = new TbpClient(cred, 'ap-beijing', clientProfile)
       let MessageList = await bot.Message.findAll()
       let MessageHtml = `The rooms I have joined are as follows: <ol>`
       for (let mes of MessageList) {
         const what = await mes.text()
+        let req = new models.TextProcessRequest()
+        let params = JSON.stringify({
+        'BotEnv': 'release',
+        'BotId': process.env.TBP_BotId,
+        'InputText': what,
+        'TerminalId': '1',
+        })
+        req.from_json_string(params)
+        client.PullSmsReplyStatusByPhoneNumber(req, function (err:any, response:any) {
+          if (err) {
+              console.log(err);
+              return;
+          }
+          const answer = response.to_json_string()
+          log.info(answer)
+      });
         const who = await mes.from()?.name()
         MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n`
       }
