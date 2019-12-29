@@ -6,7 +6,6 @@ import {
 import {
   log,
   PORT,
-  VERSION,
 }             from './config'
 import { chatops } from './chatops'
 
