@@ -95,20 +95,20 @@ export async function startWeb (
         const what = await mes.text()
         let req = new models.TextProcessRequest()
         let params = JSON.stringify({
-        'BotEnv': 'release',
-        'BotId': process.env.TBP_BotId,
-        'InputText': what,
-        'TerminalId': '1',
+          'BotEnv': 'release',
+          'BotId': process.env.TBP_BotId,
+          'InputText': what,
+          'TerminalId': '1',
         })
         req.from_json_string(params)
         client.PullSmsReplyStatusByPhoneNumber(req, function (err:any, response:any) {
           if (err) {
-              console.log(err);
-              return;
+            console.log(err)
+            return
           }
           const answer = response.to_json_string()
           log.info(answer)
-      });
+        })
         const who = await mes.from()?.name()
         MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n`
       }
