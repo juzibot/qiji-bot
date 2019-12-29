@@ -103,7 +103,6 @@ export async function startWeb (
         req.from_json_string(params)
         client.PullSmsReplyStatusByPhoneNumber(req, function (err:any, response:any) {
           if (err) {
-            console.log(err)
             return
           }
           const answer = response.to_json_string()
