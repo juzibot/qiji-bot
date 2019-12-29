@@ -11,6 +11,7 @@ import { chatops } from './chatops'
 import { sendmes } from './sendmes'
 
 let wechaty: Wechaty
+let message: Message
 
 async function chatopsHandler (request: Request, response: ResponseToolkit) {
   log.info('startWeb', 'chatopsHandler()')
@@ -31,7 +32,7 @@ async function sendmesHandler (request: Request, response: ResponseToolkit) {
     sendmes: string,
   } = request.payload as any
 
-  await sendmes(wechaty, payload.sendmes)
+  await sendmes(message, payload.sendmes)
 
   return response.redirect('/')
 }
