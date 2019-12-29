@@ -91,7 +91,7 @@ export async function startWeb (
       let MessageList = await bot.Message.findAll()
       let MessageHtml = `以下是最新出现的一些聊天记录 <ol>`
       for (let mes of MessageList) {
-        if (mes.from()?.name()!== userName) {
+        if (mes.from()?.name() !== userName) {
           const what = await mes.text()
           const who = await mes.from()?.name()
           const NewHTML = [
