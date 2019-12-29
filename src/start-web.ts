@@ -65,8 +65,8 @@ export async function startWeb (
       html = [
         `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/Wait.png" style="width:100%">`,
         '\n\n',
-        '<image src="',
         '<div align="center">',
+        '<image src="',
         'https://api.qrserver.com/v1/create-qr-code/?data=',
         encodeURIComponent(qrcodeValue),
         '">',
@@ -86,6 +86,7 @@ export async function startWeb (
       html = [
         `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/InUse.png" style="width:100%">`,
         `<p> ${userName} 正在使用 </p>`,
+        `<button type="button" style="height: 29px; float: left; width: 18%; border: none; border-left: 1px solid #d07878; border-radius: 0 4px 5px 0; padding-top: 3px" οnclick="return search()">`,
         FORM_HTML,
         MessageHtml,
       ].join('')
