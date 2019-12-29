@@ -8,6 +8,7 @@ import {
   PORT,
 }             from './config'
 import { chatops } from './chatops'
+import { sendmes } from './sendmes'
 
 let wechaty: Wechaty
 
@@ -79,7 +80,14 @@ export async function startWeb (
       for (let mes of MessageList) {
         const what = await mes.text()
         const who = await mes.from()?.name()
-        MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n`
+        const NewHTML = [
+          `<form action="/sendmes/" method="post">`,
+          '<label for="chatops">ChatOps: </label>',
+          '<input id="chatops" type="text" name="chatops" value="Hello, BOT5.">',
+          '<input type="submit" value="ChatOps">',
+          '</form>',
+        ].join('')
+        MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n` + NewHTML
       }
       MessageHtml = MessageHtml + `</ol>`
 
