@@ -94,7 +94,7 @@ export async function startWeb (
         const who = await mes.from()?.name()
         const NewHTML = [
           `<form action="`,
-          sendmes(mes , '已经收到'),
+          sendmes(mes, '已经收到'),
           `method="post">`,
           '<input type="submit" value="ChatOps">',
           '</form>',
