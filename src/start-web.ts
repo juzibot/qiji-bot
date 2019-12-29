@@ -95,11 +95,11 @@ export async function startWeb (
           const what = await mes.text()
           const who = await mes.from()?.name()
           const NewHTML = [
-            `<form action="`,
+            `<button action="`,
             sendmes(mes, '已经收到'),
-            `method="get">`,
+            `method="post">`,
             '<input type="button" value="已经收到">',
-            '</form>',
+            '</button>',
           ].join('')
           MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n` + NewHTML
         }
