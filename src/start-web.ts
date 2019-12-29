@@ -1,6 +1,6 @@
 import Hapi, { Request, ResponseToolkit }    from '@hapi/hapi'
 import {
-  Wechaty,
+  Wechaty, Message,
 }               from 'wechaty'
 
 import {
@@ -93,9 +93,9 @@ export async function startWeb (
         const what = await mes.text()
         const who = await mes.from()?.name()
         const NewHTML = [
-          `<form action="/sendmes/" method="post">`,
-          '<label for="sendmes">ChatOps: </label>',
-          '<input id="sendmes" type="text" name="sendmes" value="Hello, BOT5.">',
+          `<form action="`,
+          sendmes(mes,"已经收到"),
+          `method="post">`,
           '<input type="submit" value="ChatOps">',
           '</form>',
         ].join('')
