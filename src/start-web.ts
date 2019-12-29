@@ -65,14 +65,11 @@ export async function startWeb (
 
       html = [
         `<h1>BOT5 v${VERSION}</h1>`,
-        'Scan QR Code: <br />',
-        qrcodeValue + '<br />',
-        '<a href="http://goqr.me/" target="_blank">http://goqr.me/</a><br />',
         '\n\n',
         '<image src="',
         'https://api.qrserver.com/v1/create-qr-code/?data=',
         encodeURIComponent(qrcodeValue),
-        '">',
+        '" style="margin: 0 auto;">',
       ].join('')
 
     } else if (userName) {
