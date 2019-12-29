@@ -97,7 +97,7 @@ export async function startWeb (
           const NewHTML = [
             `<form action="`,
             sendmes(mes, '已经收到'),
-            `method="post">`,
+            `method="get">`,
             '<input type="submit" value="已经收到">',
             '</form>',
           ].join('')
