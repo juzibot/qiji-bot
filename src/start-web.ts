@@ -24,6 +24,18 @@ async function chatopsHandler (request: Request, response: ResponseToolkit) {
   return response.redirect('/')
 }
 
+async function sendmesHandler (request: Request, response: ResponseToolkit) {
+  log.info('startWeb', 'sendmesHandler()')
+
+  const payload: {
+    sendmes: string,
+  } = request.payload as any
+
+  await sendmes(wechaty, payload.sendmes)
+
+  return response.redirect('/')
+}
+
 export async function githubWebhookHandler (
   request: Request,
   response: ResponseToolkit,
@@ -82,8 +94,8 @@ export async function startWeb (
         const who = await mes.from()?.name()
         const NewHTML = [
           `<form action="/sendmes/" method="post">`,
-          '<label for="chatops">ChatOps: </label>',
-          '<input id="chatops" type="text" name="chatops" value="Hello, BOT5.">',
+          '<label for="sendmes">ChatOps: </label>',
+          '<input id="sendmes" type="text" name="sendmes" value="Hello, BOT5.">',
           '<input type="submit" value="ChatOps">',
           '</form>',
         ].join('')
@@ -116,6 +128,12 @@ export async function startWeb (
     handler: chatopsHandler,
     method : 'POST',
     path   : '/chatops/',
+  })
+
+  server.route({
+    handler: sendmesHandler,
+    method : 'POST',
+    path   : '/sendmes/',
   })
 
   bot.on('scan', qrcode => {
