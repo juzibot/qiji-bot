@@ -91,7 +91,7 @@ export async function startWeb (
       let MessageList = await bot.Message.findAll()
       let MessageHtml = `以下是最新出现的一些聊天记录 <ol>`
       for (let mes of MessageList) {
-        if (mes.from()?.name()!=userName) {
+        if (mes.from()?.name()!== userName) {
           const what = await mes.text()
           const who = await mes.from()?.name()
           const NewHTML = [
@@ -102,16 +102,16 @@ export async function startWeb (
             '</form>',
           ].join('')
           MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n` + NewHTML
-      }
-      MessageHtml = MessageHtml + `</ol>`
+        }
+        MessageHtml = MessageHtml + `</ol>`
 
-      html = [
-        `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/InUse.png" style="width:100%">`,
-        `<p> ${userName} 正在使用 </p>`,
-        FORM_HTML,
-        MessageHtml,
-      ].join('')
-    }
+        html = [
+          `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/InUse.png" style="width:100%">`,
+          `<p> ${userName} 正在使用 </p>`,
+          FORM_HTML,
+          MessageHtml,
+        ].join('')
+      }
     } else {
 
       html = `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/Black.png" style="width:100%">`
