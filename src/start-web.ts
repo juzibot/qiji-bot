@@ -1,6 +1,7 @@
 import Hapi, { Request, ResponseToolkit }    from '@hapi/hapi'
 import {
   Wechaty,
+  Message,
 }               from 'wechaty'
 
 import {
@@ -37,7 +38,11 @@ export async function githubWebhookHandler (
   return response.response()
 }
 
-export async function startWeb (bot: Wechaty): Promise<void> {
+export async function startWeb (
+  bot: Wechaty,
+  message : Message,
+  ): Promise<void> {
+  log.info('on-message', 'onMessageAgain(%s)', message)
   log.verbose('startWeb', 'startWeb(%s)', bot)
 
   let qrcodeValue : undefined | string
