@@ -71,14 +71,14 @@ export async function startWeb (
       <input type="submit" value="ChatOps">
     </form>
   `
-  const getMessageHtml = (mes: Message, saying: string) => {
+  const getMessageHtml = (mes: Message, saying: string, abb: string) => {
     const from = mes.from()
+    //<label for="sendmes">${saying}</label>
     return `
       <form action="/sendmes/" method="post">
-        <label for="sendmes">${saying}</label>
         <input id="${mes.id}" type="hidden" name="text" value="${saying}">
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="reply this">
+        <input type="submit" value="${abb}">
       </form>
     `
   }
@@ -106,7 +106,7 @@ export async function startWeb (
         if (mes.from()?.name() !== userName) {
           const what = mes.text()
           const who = mes.from()?.name()
-          const NewHTML = getMessageHtml(mes, 'hh')
+          const NewHTML = getMessageHtml(mes, 'hh', 'hh')
           MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n` + NewHTML
         }
         MessageHtml = MessageHtml + `</ol>`
