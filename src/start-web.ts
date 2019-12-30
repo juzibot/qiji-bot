@@ -11,7 +11,6 @@ import { chatops } from './chatops'
 import { sendmes } from './sendmes'
 
 let wechaty: Wechaty
-let message: Message
 
 async function chatopsHandler (request: Request, response: ResponseToolkit) {
   log.info('startWeb', 'chatopsHandler()')
