@@ -73,7 +73,7 @@ export async function startWeb (
   `
   const getMessageHtml = (mes: Message, saying: string, abb: string) => {
     const from = mes.from()
-    //<label for="sendmes">${saying}</label>
+    // <label for="sendmes">${saying}</label>
     return `
       <form action="/sendmes/" method="post">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}">
