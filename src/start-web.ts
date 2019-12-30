@@ -29,10 +29,11 @@ async function sendmesHandler (request: Request, response: ResponseToolkit) {
   log.info('startWeb', 'sendmesHandler()')
 
   const payload: {
-    sendmes: string,
+    text: string,
+    toId: string,
   } = request.payload as any
 
-  await sendmes(message, payload.sendmes)
+  await sendmes(payload.text, payload.toId)
 
   return response.redirect('/')
 }
@@ -71,6 +72,18 @@ export async function startWeb (
       <input type="submit" value="ChatOps">
     </form>
   `
+  const getMessageHtml = (mes: Message) => {
+    const from = mes.from()
+    return `
+      <form action="/sendmes/" method="post">
+        <label for="sendmes">${mes.text()}</label>
+        <input id="${mes.id}" type="text" name="text" value="${mes.text()}">
+        <input id="${mes.id}" type="text" name="toId" value="${from || ''}">
+        <input type="submit" value="reply this">
+      </form>
+    `
+  }
+
   const handler = async () => {
     let html
 
@@ -92,13 +105,14 @@ export async function startWeb (
       let MessageHtml = `以下是最新出现的一些聊天记录 <ol>`
       for (let mes of MessageList) {
         if (mes.from()?.name() !== userName) {
-          const what = await mes.text()
-          const who = await mes.from()?.name()
-          const NewHTML = [
-            `<button onclick="`,
-            async function () { await sendmes(mes, '已经收到') },
-            `">已经收到</button>`,
-          ].join('')
+          const what = mes.text()
+          const who = mes.from()?.name()
+          // const NewHTML = [
+          //   `<button onclick="`,
+          //   async function () { await sendmes(mes, '已经收到') },
+          //   `">已经收到</button>`,
+          // ].join('')
+          const NewHTML = getMessageHtml(mes)
           MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n` + NewHTML
         }
         MessageHtml = MessageHtml + `</ol>`

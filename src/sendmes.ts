@@ -1,13 +1,20 @@
-import {
-  Message,
-}             from 'wechaty'
+// import {
+//   Contact,
+// }             from 'wechaty'
+
+import { getWechaty } from './get-wechaty'
 
 export async function sendmes (
-  message: Message,
   text: string,
+  toId: string,
 ) {
-  const type = message.type()
-  if (type === Message.Type.Text) {
-    await message.say(text)
-  }
+  const name = process.env.WECHATY_NAME || 'heroku-wechaty'
+  const bot = getWechaty(name)
+  // const type = message.type()
+  // if (type === Message.Type.Text) {
+  //   await message.say(text)
+  // }
+  const contact = bot.Contact.load(toId)
+  await contact.sync()
+  await contact.say(text)
 }
