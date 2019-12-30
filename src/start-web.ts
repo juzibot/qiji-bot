@@ -75,7 +75,7 @@ export async function startWeb (
     const from = mes.from()
     // <label for="sendmes">${saying}</label>
     return `
-      <form action="/sendmes/" method="post">
+      <form action="/sendmes/" method="post" style="width:40px height:15px background-color:yellow">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}">
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
         <input type="submit" value="${abb}">
@@ -107,7 +107,8 @@ export async function startWeb (
           const what = mes.text()
           const who = mes.from()?.name()
           const NewHTML = getMessageHtml(mes, 'hh', 'hh')
-          MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n` + NewHTML
+          const NextHTML = getMessageHtml(mes, 'gg', 'gg')
+          MessageHtml = MessageHtml + `<li> ${who} / ${what} </li>\n` + NewHTML + NextHTML
         }
         MessageHtml = MessageHtml + `</ol>`
 
