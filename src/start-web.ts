@@ -76,8 +76,8 @@ export async function startWeb (
     return `
       <form action="/sendmes/" method="post">
         <label for="sendmes">${mes.text()}</label>
-        <input id="${mes.id}" type="text" name="text" value="${mes.text()}">
-        <input id="${mes.id}" type="text" name="toId" value="${from || ''}">
+        <input id="${mes.id}" type="hidden" name="text" value="${mes.text()}">
+        <input id="${mes.id}" type="hidden" name="toId" value="${from && from.id || ''}">
         <input type="submit" value="reply this">
       </form>
     `
