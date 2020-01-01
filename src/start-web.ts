@@ -71,7 +71,7 @@ export async function startWeb (
       <form action="/sendmes/" method="post" style="display:inline">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="${abb}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#ffffff">
+        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#ffffff">
       </form>
     `
   }
@@ -103,8 +103,8 @@ export async function startWeb (
           const NextHTML = getMessageHtml(mes, '我们第一期的很多项目实际上都很优秀，但是因为我们第一期的规模有限没有办法邀请所有项目进入创业营，而我们这一期将会扩招，相信您的项目有机会成为其中之一。', '为什么上一期落选', '3f3f3f')
           const ThirdHTML = getMessageHtml(mes, '您可以介绍一下您的项目嘛？我们很期待触达更多的创业者并帮助他们融资。', '邀请介绍项目', '3f3f3f')
           const Person = [
-            `<p>`,
-            `<p style="display:inline">`,
+            `<p style="margin:10px 0px 0px 0px">`,
+            `<p style="display:inline;margin:0px 10px 0px 0px">`,
             who,
             '</p>',
             `<p style="display:inline;color:#555555">`,
@@ -118,7 +118,10 @@ export async function startWeb (
 
         html = [
           `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/InUse.png" style="width:100%">`,
-          `<p> 上线账号 ${userName}  </p>`,
+          `<p>`,
+          `<p style="display:inline"> 正在登录 </p>`,
+          `<p style="display:inline"> ${userName}  </p>`,
+          `</p>`,
           MessageHtml,
         ].join('')
       }
