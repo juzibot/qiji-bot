@@ -64,14 +64,7 @@ export async function startWeb (
     port: PORT,
   })
 
-  const FORM_HTML = `
-    <form action="/chatops/" method="post">
-      <label for="chatops">ChatOps: </label>
-      <input id="chatops" type="text" name="chatops" value="Hello, BOT5.">
-      <input type="submit" value="ChatOps">
-    </form>
-  `
-  const getMessageHtml = (mes: Message, saying: string, abb: string, color:string) => {
+const getMessageHtml = (mes: Message, saying: string, abb: string, color:string) => {
     const from = mes.from()
     // <label for="sendmes">${saying}</label>
     return `
@@ -113,7 +106,7 @@ export async function startWeb (
             `<p>`,
             `<p style="display:inline">`,
             who,
-            '</p',
+            '</p>',
             `<p style="display:inline;color:#555555">`,
             what,
             '</p>',
@@ -125,8 +118,7 @@ export async function startWeb (
 
         html = [
           `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/InUse.png" style="width:100%">`,
-          `<p> ${userName} 正在使用 </p>`,
-          FORM_HTML,
+          `<p> 上线账号 ${userName}  </p>`,
           MessageHtml,
         ].join('')
       }
