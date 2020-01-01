@@ -8,7 +8,7 @@ import {
   PORT,
 }             from './config'
 import { chatops } from './chatops'
-import { sendmes } from './sendmes'
+import { sendmes } from './coupling/sendmes'
 
 let wechaty: Wechaty
 
