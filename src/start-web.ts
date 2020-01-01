@@ -9,6 +9,7 @@ import {
 }             from './config'
 import { chatops } from './chatops'
 import { sendmes } from './coupling/sendmes'
+import { mesalias } from './coupling/mesalias'
 
 let wechaty: Wechaty
 
@@ -33,6 +34,20 @@ async function sendmesHandler (request: Request, response: ResponseToolkit) {
   } = request.payload as any
 
   await sendmes(payload.text, payload.toId)
+
+  return response.redirect('/')
+}
+
+async function mesaliasHandler (request: Request, response: ResponseToolkit) {
+  log.info('startWeb', 'mesaliasHandler()')
+
+  const payload: {
+    text: string,
+    toId: string,
+    change: string,
+  } = request.payload as any
+
+  await mesalias(payload.text, payload.toId, payload.change)
 
   return response.redirect('/')
 }
@@ -76,6 +91,19 @@ export async function startWeb (
     `
   }
 
+  const ChangeHtml = (mes: Message, saying: string, abb: string, color:string, alias:string) => {
+    const from = mes.from()
+    // <label for="sendmes">${saying}</label>
+    return `
+      <form action="/mesalias/" method="post" style="display:inline">
+        <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
+        <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
+        <input id="${mes.id}" type="hidden" name="toId" value="${(alias) || ''}">
+        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#ffffff">
+      </form>
+    `
+  }
+
   const handler = async () => {
     let html
 
@@ -101,7 +129,7 @@ export async function startWeb (
           const who = mes.from()?.name()
           const NewHTML = getMessageHtml(mes, '我们对于项目是没有要求的，以我们刚刚结束的第一期创业营为例，其中既有像脑机接口这样的硬科技项目、也有像鱼塘物联网设备这样的技术落地项目、还有像中老年人帮子女相亲的社区这样的C端项目。', '对项目没有要求', '3f3f3f')
           const NextHTML = getMessageHtml(mes, '我们第一期的很多项目实际上都很优秀，但是因为我们第一期的规模有限没有办法邀请所有项目进入创业营，而我们这一期将会扩招，相信您的项目有机会成为其中之一。', '为什么上一期落选', '3f3f3f')
-          const ThirdHTML = getMessageHtml(mes, '您可以介绍一下您的项目嘛？我们很期待触达更多的创业者并帮助他们融资。', '邀请介绍项目', '3f3f3f')
+          const ThirdHTML = ChangeHtml(mes, '您可以介绍一下您的项目嘛？我们很期待触达更多的创业者并帮助他们融资。', '邀请介绍项目', '3f3f3f', '感兴趣-' + who )
           const Person = [
             `<p>`,
             `<p style="display:inline;margin:0px 10px 0px 0px">`,
@@ -149,6 +177,12 @@ export async function startWeb (
     handler: sendmesHandler,
     method : 'POST',
     path   : '/sendmes/',
+  })
+
+  server.route({
+    handler: mesaliasHandler,
+    method : 'POST',
+    path   : '/mesalias/',
   })
 
   bot.on('scan', qrcode => {

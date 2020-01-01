@@ -1,7 +1,3 @@
-// import {
-//   Contact,
-// }             from 'wechaty'
-
 import { getWechaty } from '../get-wechaty'
 
 export async function sendmes (
