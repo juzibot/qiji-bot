@@ -86,7 +86,7 @@ export async function startWeb (
       <form action="/sendmes/" method="post" style="display:inline">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#ffffff">
+        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
       </form>
     `
   }
@@ -99,7 +99,7 @@ export async function startWeb (
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
         <input id="${mes.id}" type="hidden" name="change" value="${(alias) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#ffffff">
+        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
       </form>
     `
   }
@@ -127,9 +127,11 @@ export async function startWeb (
         if (mes.from()?.name() !== userName) {
           const what = mes.text()
           const who = mes.from()?.name()
-          const NewHTML = getMessageHtml(mes, '我们对于项目是没有要求的，以我们刚刚结束的第一期创业营为例，其中既有像脑机接口这样的硬科技项目、也有像鱼塘物联网设备这样的技术落地项目、还有像中老年人帮子女相亲的社区这样的C端项目。', '对项目没有要求', '3f3f3f')
-          const NextHTML = getMessageHtml(mes, '我们第一期的很多项目实际上都很优秀，但是因为我们第一期的规模有限没有办法邀请所有项目进入创业营，而我们这一期将会扩招，相信您的项目有机会成为其中之一。', '为什么上一期落选', '3f3f3f')
-          const ThirdHTML = ChangeHtml(mes, '您可以介绍一下您的项目嘛？我们很期待触达更多的创业者并帮助他们融资。', '邀请介绍项目', '3f3f3f', '感兴趣-')
+          const OneOne = getMessageHtml(mes, '您好！我叫尹伯昊，目前在和陆奇博士一起通过投资的方式构建早期创业生态，我自己也是一名教育AI的创业者。\n奇绩创坛前身是YC中国。希望通过【一笔标准化投资、三个月陆奇博士亲自参与的加速营、触达上千位一线投资人的路演日】的方式，用投资的方式帮助创业者越过早期创业的艰难。', '加好友第一条', 'f9f5ea')
+          const OneTwo = getMessageHtml(mes, '您是创业者嘛？如果是的话，您可以具体介绍一下您的项目嘛？比如项目发展到什么阶段了、是否有融资需求等，我会尽我所能提供帮助。', '加好友第二条', 'f9f5ea')
+          const OneThree = getMessageHtml(mes, '我们对于项目是没有要求的，以我们刚刚结束的第一期创业营为例，其中既有像脑机接口这样的硬科技项目、也有像鱼塘物联网设备这样的技术落地项目、还有像中老年人帮子女相亲的社区这样的C端项目。', '对项目没有要求', 'f9f5ea')
+          const OneFour = getMessageHtml(mes, '我们第一期的很多项目实际上都很优秀，但是因为我们第一期的规模有限没有办法邀请所有项目进入创业营，而我们这一期将会扩招，相信您的项目有机会成为其中之一。', '为什么上一期落选', 'f9f5ea')
+          const OneFive = ChangeHtml(mes, '您可以介绍一下您的项目嘛？我们很期待触达更多的创业者并帮助他们融资。', '邀请介绍项目', 'c8beb7', '感兴趣-')
           const Person = [
             `<p>`,
             `<p style="display:inline;margin:0px 10px 0px 0px">`,
@@ -140,7 +142,7 @@ export async function startWeb (
             '</p>',
             '</p>',
           ].join('')
-          MessageHtml = Person + NewHTML + NextHTML + ThirdHTML + MessageHtml + '<p>\n\n</p>'
+          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + MessageHtml + '<p>\n\n</p>'
         }
         MessageHtml = MessageHtml + `</ol>`
 
