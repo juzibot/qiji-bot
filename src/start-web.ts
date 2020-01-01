@@ -64,7 +64,7 @@ export async function startWeb (
     port: PORT,
   })
 
-const getMessageHtml = (mes: Message, saying: string, abb: string, color:string) => {
+  const getMessageHtml = (mes: Message, saying: string, abb: string, color:string) => {
     const from = mes.from()
     // <label for="sendmes">${saying}</label>
     return `
