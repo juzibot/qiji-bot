@@ -98,7 +98,7 @@ export async function startWeb (
       <form action="/mesalias/" method="post" style="display:inline">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input id="${mes.id}" type="hidden" name="toId" value="${(alias) || ''}">
+        <input id="${mes.id}" type="hidden" name="change" value="${(alias) || ''}">
         <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#ffffff">
       </form>
     `
