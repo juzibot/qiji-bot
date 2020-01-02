@@ -79,20 +79,24 @@ export async function startWeb (
     port: PORT,
   })
 
-  const FORM_HTML = `
-    <form action="/chatops/" method="post">
-      <label for="chatops">ChatOps: </label>
-      <input id="chatops" type="text" name="chatops" value="Hello, BOT5.">
-      <input type="submit" value="ChatOps">
-    </form>
-  `
-
   const getMessageHtml = (mes: Message, saying: string, abb: string, color:string) => {
     const from = mes.from()
     // <label for="sendmes">${saying}</label>
     return `
       <form action="/sendmes/" method="post" style="display:inline">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
+        <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
+        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
+      </form>
+    `
+  }
+
+  const SendHtml = (mes: Message, saying: string, abb: string, color:string) => {
+    const from = mes.from()
+    // <label for="sendmes">${saying}</label>
+    return `
+      <form action="/sendmes/" method="post" style="display:inline">
+        <input id="${mes.id}" type="text" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
         <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
       </form>
@@ -161,7 +165,8 @@ export async function startWeb (
             '</p>',
             '</p>',
           ].join('')
-          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + MessageHtml + '<p>\n\n</p>'
+          const FORM_HTML = SendHtml(mes, 'gh', 'gg', 'fff000')
+          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + MessageHtml + FORM_HTML + '<p>\n\n</p>'
         }
 
         html = [
@@ -171,7 +176,6 @@ export async function startWeb (
           `<p style="display:inline"> 正在登录 </p>`,
           `<p style="display:inline"> ${userName}  </p>`,
           `</p>`,
-          FORM_HTML,
           MessageHtml,
           `</div>`,
         ].join('')
