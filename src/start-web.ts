@@ -10,6 +10,7 @@ import {
 import { chatops } from './coupling/chatops'
 import { sendmes } from './coupling/sendmes'
 import { mesalias } from './coupling/mesalias'
+import { sendpic } from './coupling/sendpic'
 
 let wechaty: Wechaty
 
@@ -52,6 +53,19 @@ async function mesaliasHandler (request: Request, response: ResponseToolkit) {
   return response.redirect('/')
 }
 
+async function sendpicHandler (request: Request, response: ResponseToolkit) {
+  log.info('startWeb', 'sendpicHandler()')
+
+  const payload: {
+    url: string,
+    toId: string,
+  } = request.payload as any
+
+  await sendpic(payload.url, payload.toId)
+
+  return response.redirect('/')
+}
+
 export async function githubWebhookHandler (
   request: Request,
   response: ResponseToolkit,
@@ -86,7 +100,7 @@ export async function startWeb (
       <form action="/sendmes/" method="post" style="display:inline">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:0 0.5% 0.5% 0;vertical-align:middle">
+        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:0 0.5% 0.5% 0">
       </form>
     `
   }
@@ -98,7 +112,7 @@ export async function startWeb (
       <form action="/sendmes/" method="post">
         <input id="${mes.id}" type="text" name="text" value="${saying}" style="width:86%;height:40px;background-color: #f9f5ea;border-radius:5px;color:#ffffff;margin:0 0.5% 0.5% 0">
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:0 0.5% 0.5% 0;vertical-align:middle">
+        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:0 0.5% 0.5% 0">
       </form>
     `
   }
@@ -111,7 +125,19 @@ export async function startWeb (
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
         <input id="${mes.id}" type="hidden" name="change" value="${(alias) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:0 0.5% 0.5% 0;vertical-align:middle">
+        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:0 0.5% 0.5% 0">
+      </form>
+    `
+  }
+
+  const SendpicHtml = (mes: Message, saying: string, abb: string, color:string) => {
+    const from = mes.from()
+    // <label for="sendmes">${saying}</label>
+    return `
+      <form action="/sendmes/" method="post" style="display:inline">
+        <input id="${mes.id}" type="hidden" name="url" value="${saying}" >
+        <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
+        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:0 0.5% 0.5% 0">
       </form>
     `
   }
@@ -155,6 +181,7 @@ export async function startWeb (
           const ThreeFour = ChangeHtml(mes, '非常感谢您的报名！我们团队会在2020年2月完成审核和面试邀请，期待着到时候与您见面！更期待着能在三月与您一起参与我们的创业营！', '完成报名 / 已提交', 'ede1d9', '已提交-')
           const ThreeFive = getMessageHtml(mes, '嗯嗯，我们会在2020年2月确定投资，2020年3月到5月举行创业营，这段时间您可以专心发展业务，有任何进展我们都会联系您。', '会在什么时候投资', 'f9f5ea')
           const FourOne = ChangeHtml(mes, '嗯嗯，那可能确实很多地方没有那么合适。但是我们可以长期保持联系！\n祝您工作顺利！', '确认无意愿 / 无意愿', 'ede1d9', '无意愿-')
+          const FourTwo = SendpicHtml(mes, 'https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/YCCooperate/WechatIMG9.jpeg', '发图片', 'f9f5ea')
           const Person = [
             `<p>`,
             `<p style="display:inline;margin:0px 10px 0px 0px">`,
@@ -166,7 +193,7 @@ export async function startWeb (
             '</p>',
           ].join('')
           const FORM_HTML = SendHtml(mes, '', '立刻回复', 'ede1d9')
-          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + FORM_HTML + MessageHtml + '<p>\n\n</p>'
+          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + FourTwo + FORM_HTML + MessageHtml + '<p>\n\n</p>'
         }
 
         html = [
@@ -212,6 +239,12 @@ export async function startWeb (
     handler: mesaliasHandler,
     method : 'POST',
     path   : '/mesalias/',
+  })
+
+  server.route({
+    handler: sendpicHandler,
+    method : 'POST',
+    path   : '/sendpic/',
   })
 
   bot.on('scan', qrcode => {
