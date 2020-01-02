@@ -181,7 +181,8 @@ export async function startWeb (
           const ThreeFour = ChangeHtml(mes, '非常感谢您的报名！我们团队会在2020年2月完成审核和面试邀请，期待着到时候与您见面！更期待着能在三月与您一起参与我们的创业营！', '完成报名 / 已提交', 'ede1d9', '已提交-')
           const ThreeFive = getMessageHtml(mes, '嗯嗯，我们会在2020年2月确定投资，2020年3月到5月举行创业营，这段时间您可以专心发展业务，有任何进展我们都会联系您。', '会在什么时候投资', 'f9f5ea')
           const FourOne = ChangeHtml(mes, '嗯嗯，那可能确实很多地方没有那么合适。但是我们可以长期保持联系！\n祝您工作顺利！', '确认无意愿 / 无意愿', 'ede1d9', '无意愿-')
-          const FourTwo = SendpicHtml(mes, 'https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/YCCooperate/WechatIMG9.jpeg', '发图片', 'f9f5ea')
+          const FourTwo = SendpicHtml(mes, 'https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/YCCooperate/WechatIMG9.jpeg', '发图片jpeg', 'f9f5ea')
+          const FourThree = SendpicHtml(mes, 'https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/YCCooperate/%E6%88%91%E6%83%B3%E6%8A%95%E8%B5%84%E5%B0%8F%E6%B5%85.png', '发图片png', 'f9f5ea')
           const Person = [
             `<p>`,
             `<p style="display:inline;margin:0px 10px 0px 0px">`,
@@ -193,7 +194,7 @@ export async function startWeb (
             '</p>',
           ].join('')
           const FORM_HTML = SendHtml(mes, '', '立刻回复', 'ede1d9')
-          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + FourTwo + FORM_HTML + MessageHtml + '<p>\n\n</p>'
+          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + FourTwo + FourThree + FORM_HTML + MessageHtml + '<p>\n\n</p>'
         }
 
         html = [
