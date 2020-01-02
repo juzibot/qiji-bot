@@ -158,7 +158,7 @@ export async function startWeb (
 
         html = [
           `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/InUse.png" style="width:100%">`,
-          `<div sytle="width:90%" align="center">`,
+          `<div style="width:90%">`,
           `<p>`,
           `<p style="display:inline"> 正在登录 </p>`,
           `<p style="display:inline"> ${userName}  </p>`,
