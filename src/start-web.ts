@@ -95,8 +95,8 @@ export async function startWeb (
     const from = mes.from()
     // <label for="sendmes">${saying}</label>
     return `
-      <form action="/sendmes/" method="post" style="display:inline">
-        <input id="${mes.id}" type="text" name="text" value="${saying}" style="width:480px;height:40px;background-color: #f9f5ea;border-radius:5px;color:#575169">
+      <form action="/sendmes/" method="post">
+        <input id="${mes.id}" type="text" name="text" value="${saying}" style="width:480px;height:40px;background-color: #f9f5ea;border-radius:5px;color:#ffffff">
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
         <input type="submit" value="${abb}" title="${saying}" style="width:90px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
       </form>
