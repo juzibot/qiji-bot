@@ -96,7 +96,7 @@ export async function startWeb (
     // <label for="sendmes">${saying}</label>
     return `
       <form action="/sendmes/" method="post" style="display:inline">
-        <input id="${mes.id}" type="text" name="text" value="${saying}" >
+        <input id="${mes.id}" type="text" name="text" value="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
         <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
       </form>
@@ -166,7 +166,7 @@ export async function startWeb (
             '</p>',
           ].join('')
           const FORM_HTML = SendHtml(mes, 'gh', 'gg', 'fff000')
-          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + MessageHtml + FORM_HTML + '<p>\n\n</p>'
+          MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + FORM_HTML + MessageHtml + '<p>\n\n</p>'
         }
 
         html = [
