@@ -11,4 +11,5 @@ export async function sendpic (
   await contact.sync()
   const fileBox = FileBox.fromUrl(url)
   await contact.say(fileBox)
+  await contact.say('尝试发送一张图片')
 }
