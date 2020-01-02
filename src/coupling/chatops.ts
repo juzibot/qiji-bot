@@ -5,7 +5,7 @@ import {
 
 import {
   log,
-}                   from './config'
+}                   from '../config'
 
 const CHATOPS_ROOM_TOPIC  = '奇绩创坛测试'
 const CHATOPS_ROOM_ID     = '19783089510@chatroom'

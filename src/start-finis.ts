@@ -3,7 +3,7 @@ import { Wechaty }  from 'wechaty'
 
 import {
   chatops,
-}             from './chatops'
+}             from './coupling/chatops'
 import {
   log,
   VERSION,

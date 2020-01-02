@@ -7,7 +7,7 @@ import {
   log,
   PORT,
 }             from './config'
-import { chatops } from './chatops'
+import { chatops } from './coupling/chatops'
 import { sendmes } from './coupling/sendmes'
 import { mesalias } from './coupling/mesalias'
 
@@ -78,6 +78,14 @@ export async function startWeb (
   const server =  new Hapi.Server({
     port: PORT,
   })
+
+  const FORM_HTML = `
+    <form action="/chatops/" method="post">
+      <label for="chatops">ChatOps: </label>
+      <input id="chatops" type="text" name="chatops" value="Hello, BOT5.">
+      <input type="submit" value="ChatOps">
+    </form>
+  `
 
   const getMessageHtml = (mes: Message, saying: string, abb: string, color:string) => {
     const from = mes.from()
@@ -163,6 +171,7 @@ export async function startWeb (
           `<p style="display:inline"> 正在登录 </p>`,
           `<p style="display:inline"> ${userName}  </p>`,
           `</p>`,
+          FORM_HTML,
           MessageHtml,
           `</div>`,
         ].join('')
