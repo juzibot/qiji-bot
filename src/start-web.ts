@@ -86,7 +86,7 @@ export async function startWeb (
       <form action="/sendmes/" method="post" style="display:inline">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
+        <input type="submit" value="${abb}" title="${saying}" style="width:180px;height:40px;background-color: #${color};border-radius:5px;color:#575169;padding:1%">
       </form>
     `
   }
@@ -96,9 +96,9 @@ export async function startWeb (
     // <label for="sendmes">${saying}</label>
     return `
       <form action="/sendmes/" method="post">
-        <input id="${mes.id}" type="text" name="text" value="${saying}" style="width:480px;height:40px;background-color: #f9f5ea;border-radius:5px;color:#ffffff">
+        <input id="${mes.id}" type="text" name="text" value="${saying}" style="width:85%;height:40px;background-color: #f9f5ea;border-radius:5px;color:#ffffff;padding:1%">
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:90px;height:40px;background-color: #${color};border-radius:5px;color:#575169">
+        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;padding:1%">
       </form>
     `
   }
@@ -165,7 +165,7 @@ export async function startWeb (
             '</p>',
             '</p>',
           ].join('')
-          const FORM_HTML = SendHtml(mes, '请在这里输入你想要回复的内容', '立刻回复', 'ede1d9')
+          const FORM_HTML = SendHtml(mes, '', '立刻回复', 'ede1d9')
           MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + FORM_HTML + MessageHtml + '<p>\n\n</p>'
         }
 
@@ -176,9 +176,9 @@ export async function startWeb (
           `<p style="display:inline"> 正在登录 </p>`,
           `<p style="display:inline"> ${userName}  </p>`,
           `</p>`,
-          `<p style="color:#f1f1f1">最新消息</p>`,
+          `<p style="color:#d5d5d5">最新消息</p>`,
           MessageHtml,
-          `<p style="color:#f1f1f1">最早消息</p>`,
+          `<p style="color:#d5d5d5">最早消息</p>`,
           `</div>`,
         ].join('')
       }
