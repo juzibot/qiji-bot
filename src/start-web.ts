@@ -176,7 +176,9 @@ export async function startWeb (
           `<p style="display:inline"> 正在登录 </p>`,
           `<p style="display:inline"> ${userName}  </p>`,
           `</p>`,
+          `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/Latest.png" style="width:100%">`,
           MessageHtml,
+          `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/Former.png" style="width:100%">`,
           `</div>`,
         ].join('')
       }
