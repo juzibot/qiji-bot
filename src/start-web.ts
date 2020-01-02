@@ -155,7 +155,7 @@ export async function startWeb (
           ].join('')
           MessageHtml = Person + OneOne + OneTwo + OneThree + OneFour + OneFive + TwoOne + TwoTwo + TwoThree + TwoFour + TwoFive + ThreeOne + ThreeTwo + ThreeThree + ThreeFour + ThreeFive + FourOne + MessageHtml + '<p>\n\n</p>'
         }
-        MessageHtml = MessageHtml + `</ol>`
+        MessageHtml = `<p sytle="width:90%" align="center">` + MessageHtml + `</p>`
 
         html = [
           `<image src="https://phaedodata-1253507825.cos.ap-beijing.myqcloud.com/QijiBot/InUse.png" style="width:100%">`,
