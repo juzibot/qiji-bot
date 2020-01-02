@@ -86,7 +86,7 @@ export async function startWeb (
       <form action="/sendmes/" method="post" style="display:inline">
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:10.5%;height:40px;background-color: #${color};border-radius:5px;color:#575169;padding:1%;vertical-align:middle">
+        <input type="submit" value="${abb}" title="${saying}" style="width:10.5%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:1%;vertical-align:middle">
       </form>
     `
   }
@@ -96,9 +96,9 @@ export async function startWeb (
     // <label for="sendmes">${saying}</label>
     return `
       <form action="/sendmes/" method="post">
-        <input id="${mes.id}" type="text" name="text" value="${saying}" style="width:86%;height:40px;background-color: #f9f5ea;border-radius:5px;color:#ffffff;padding:1%">
+        <input id="${mes.id}" type="text" name="text" value="${saying}" style="width:86%;height:40px;background-color: #f9f5ea;border-radius:5px;color:#ffffff;margin:1%">
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;padding:1%;vertical-align:middle">
+        <input type="submit" value="${abb}" title="${saying}" style="width:10%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:1%;vertical-align:middle">
       </form>
     `
   }
@@ -111,7 +111,7 @@ export async function startWeb (
         <input id="${mes.id}" type="hidden" name="text" value="${saying}" >
         <input id="${mes.id}" type="hidden" name="toId" value="${(from && from.id) || ''}">
         <input id="${mes.id}" type="hidden" name="change" value="${(alias) || ''}">
-        <input type="submit" value="${abb}" title="${saying}" style="width:10.5%;height:40px;background-color: #${color};border-radius:5px;color:#575169;padding:1%;vertical-align:middle">
+        <input type="submit" value="${abb}" title="${saying}" style="width:10.5%;height:40px;background-color: #${color};border-radius:5px;color:#575169;margin:1%;vertical-align:middle">
       </form>
     `
   }
