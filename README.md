@@ -10,8 +10,6 @@
 
 We are current DevOps the master branch from the repo to Heroku under the protection of Travis CI.
 
-You can visit the staging system at <https://qiji-bot.herokuapp.com/>
-
 ## SEE ALSO
 
 - [Creating a 'Deploy to Heroku' Button](https://devcenter.heroku.com/articles/heroku-button)
