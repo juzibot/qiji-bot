@@ -30,6 +30,6 @@ We are current DevOps the master branch from the repo to Heroku under the protec
 
 ## COPYRIGHT & LICENSE
 
-- Code & Docs © 2019-now Juzi BOT
+- Code & Docs © 2019-now Juzi.BOT
 - Code released under the Apache-2.0 License
 - Docs released under Creative Commons
