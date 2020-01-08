@@ -3,7 +3,7 @@ import { Wechaty }  from 'wechaty'
 
 import {
   chatops,
-}             from './chatops'
+}             from './coupling/chatops'
 import {
   log,
   VERSION,
@@ -11,8 +11,8 @@ import {
 
 const BOT_NAME = 'Qiji BOT'
 
-const LOGIN_ANNOUNCEMENT  = `奇绩创坛机器人上线～\n${BOT_NAME} v${VERSION}`
-const EXIT_ANNOUNCEMENT   = `奇绩创坛机器人下线～\n${BOT_NAME} v${VERSION}`
+const LOGIN_ANNOUNCEMENT  = `奇绩创坛小助手上线～\n${BOT_NAME} v${VERSION}`
+const EXIT_ANNOUNCEMENT   = `奇绩创坛小助手下线～\n${BOT_NAME} v${VERSION}`
 
 let bot: undefined | Wechaty
 
